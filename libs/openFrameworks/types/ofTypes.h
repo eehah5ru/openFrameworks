@@ -6,6 +6,7 @@
 //----------------------------------------------------------
 
 #include <mutex>
+#include <memory>
 /// \brief A typedef for a cross-platform mutex.
 /// \deprecated Please use std::mutex instead of ofMutex. See also the note below.
 ///
