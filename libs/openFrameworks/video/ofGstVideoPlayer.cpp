@@ -117,6 +117,12 @@ bool ofGstVideoPlayer::createPipeline(std::string name){
 		GstElement * gstPipeline = gst_element_factory_make("playbin2","player");
 	#else
         #if GST_VERSION_MAJOR==1 && GST_VERSION_MINOR > 18
+    		std::cerr << "playbin3: injecting orangepi plugins" << std::endl;
+        GstRegistry *reg = gst_registry_get();
+        GstPluginFeature *plugin;
+        plugin = gst_registry_lookup_feature(reg, "mppvideodec");
+        gst_plugin_feature_set_rank(plugin, GST_RANK_PRIMARY);
+
             //TODO: Fedora 35 onwards has issues with playbin - so using playbin3
             //TODO: Check future GStreamer versions and potentially return to "playbin", or use a different approach to create the pipeline.
             GstElement * gstPipeline = gst_element_factory_make("playbin3","player");
