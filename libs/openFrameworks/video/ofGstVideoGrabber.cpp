@@ -772,7 +772,7 @@ bool ofGstVideoGrabber::setup(int w, int h){
 		}
 
 		if( w!=format.width || h!=format.height ){
-			scale = "! videoscale method=2 ";
+			scale += "! videoscale method=2 ";
 		}
 
 		if(format.format_name==""){
